@@ -12,8 +12,9 @@ HERE = Path(__file__).resolve().parent
 
 
 def main() -> None:
-    raw = (HERE / "line.txt").read_text(encoding="utf-8")
+    raw = (HERE / "line.txt").read_text(encoding="utf-8-sig")
     text = raw[:-1] if raw.endswith("\n") else raw
+    text = text.strip()
     assert text, "line.txt is empty"
     assert "\n" not in text, "entry must be a single line"
     assert text.strip(), "entry is whitespace-only"
